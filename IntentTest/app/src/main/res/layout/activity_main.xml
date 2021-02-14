@@ -14,7 +14,6 @@
         android:layout_weight="9"
         android:listSelector="#606060"
         android:background="#272727"
-        android:choiceMode="multipleChoice"
         android:id="@+id/list_view"
         />
     <LinearLayout
