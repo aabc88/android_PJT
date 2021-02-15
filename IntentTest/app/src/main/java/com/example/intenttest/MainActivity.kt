@@ -1,9 +1,9 @@
 package com.example.intenttest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView.OnItemClickListener
+import android.view.View
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.intenttest.databinding.ActivityMainBinding
 
 var DataList = arrayListOf(
@@ -33,7 +33,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         binding.listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
         binding.listView.adapter = CustomAdapter(this, DataList)
+
+        binding.btn1.setOnClickListener(View.OnClickListener {
+            var select_data:String
+        })
     }
-
-
 }
