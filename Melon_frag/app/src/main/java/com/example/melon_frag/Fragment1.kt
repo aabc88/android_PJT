@@ -1,4 +1,4 @@
-package com.example.fruitpjt
+package com.example.melon_frag
 
 import android.os.Bundle
 import android.view.LayoutInflater

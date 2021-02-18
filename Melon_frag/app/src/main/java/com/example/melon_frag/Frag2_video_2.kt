@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.fruitpjt.Fragment2
 import com.example.melon_frag.databinding.Farg2Video2Binding
 
 

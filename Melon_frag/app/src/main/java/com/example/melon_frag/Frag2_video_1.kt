@@ -2,6 +2,7 @@ package com.example.melon_frag
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ class Frag2_video_1 : Fragment()   {
         val view = binding.root
 
         val video1 : Uri = Uri.parse("android.resource://com.example.melon_frag/raw/iu")
+        val mp : MediaPlayer = MediaPlayer()
         binding.frag2Video1.setVideoURI(video1)
         binding.frag2Video1.start()
 

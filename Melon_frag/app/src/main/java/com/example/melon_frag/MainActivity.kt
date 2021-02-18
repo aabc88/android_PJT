@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         statusbarVisible(true)
         binding.moveToPlayList.setOnClickListener {
-            var intent = Intent(this, Play_List::class.java)
+            var intent = Intent(this, activity_play_list::class.java)
             startActivity(intent)
         }
 
