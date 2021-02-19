@@ -8,20 +8,7 @@ import android.widget.ListView
 import com.example.melon_frag.databinding.ActivityPlayListBinding
 
 var DataList = arrayListOf(
-    Data(R.drawable.melon_chart_1, "Celebrity", "아이유", false),
-    Data(R.drawable.ic_launcher_background, "1", "b", false),
-    Data(R.drawable.ic_launcher_background, "2", "c", false),
-    Data(R.drawable.ic_launcher_background, "3", "d", false),
-    Data(R.drawable.ic_launcher_background, "4", "e", false),
-    Data(R.drawable.ic_launcher_background, "5", "f", false),
-    Data(R.drawable.ic_launcher_background, "6", "f", false),
-    Data(R.drawable.ic_launcher_background, "7", "f", false),
-    Data(R.drawable.ic_launcher_background, "8", "f", false),
-    Data(R.drawable.ic_launcher_background, "9", "f", false),
-    Data(R.drawable.ic_launcher_background, "10", "f", false),
-    Data(R.drawable.ic_launcher_background, "11", "f", false),
-    Data(R.drawable.ic_launcher_background, "12", "f", false),
-    Data(R.drawable.ic_launcher_background, "13", "f", false)
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
 )
 
 class activity_play_list : AppCompatActivity() {
@@ -65,8 +52,18 @@ class activity_play_list : AppCompatActivity() {
         })*/
     }
 
+    override fun onPause() {
+        super.onPause()
+        for (i in 0..DataList.size - 1) {
+            DataList[i].checked_box = false
+        }
+    }
+
     override fun onRestart() {
         super.onRestart()
+        for (i in 0..DataList.size - 1) {
+            DataList[i].checked_box = false
+        }
         (binding.listView.adapter as CustomAdapter).notifyDataSetChanged()
     }
 }

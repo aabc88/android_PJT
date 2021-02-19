@@ -24,7 +24,7 @@ class CustomAdapter(val context: Context, val DataList: ArrayList<Data>) : BaseA
         val view: View = LayoutInflater.from(context).inflate(R.layout.custom_listview, null)
         val profile = view.findViewById<ImageView>(R.id.imageView)
         val name = view.findViewById<TextView>(R.id.txt_name)
-        val songname = view.findViewById<TextView>(R.id.txt_songname)
+        val songname = view.findViewById<TextView>(R.id.txt_song)
         val data = DataList[position]
         val checkebox = view.findViewById<CheckBox>(R.id.ch_box)
 
@@ -37,6 +37,9 @@ class CustomAdapter(val context: Context, val DataList: ArrayList<Data>) : BaseA
         checkebox.setOnClickListener {
             val nowState: Boolean = !DataList[position].checked_box
             DataList[position].checked_box = nowState
+            /*if (nowState){
+                view.setBackgroundColor(Color.parseColor("#fff"))
+            }else view.setBackgroundColor(Color.parseColor("#000"))*/
         }
         return view
     }

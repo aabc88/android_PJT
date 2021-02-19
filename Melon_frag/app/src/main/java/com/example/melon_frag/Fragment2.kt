@@ -17,27 +17,97 @@ import com.google.android.material.animation.AnimationUtils
 
 class Fragment2 : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var drawerToggle:Boolean = false
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        var drawerToggle: Boolean = false
         val binding = Frag2Binding.inflate(layoutInflater)
         val view = binding.root
         var nowpage: Int = 1
         setFrag(1)
 
-        var tranLeft:Animation = android.view.animation.AnimationUtils.loadAnimation(context,R.anim.translate_top)
-        var tranRight:Animation = android.view.animation.AnimationUtils.loadAnimation(context,R.anim.translate_bot)
+        var tranLeft: Animation =
+            android.view.animation.AnimationUtils.loadAnimation(context, R.anim.translate_top)
+        var tranRight: Animation =
+            android.view.animation.AnimationUtils.loadAnimation(context, R.anim.translate_bot)
 
 
 
-        binding.btnIu.setOnClickListener{
-            Toast.makeText(context, "플레이리스트에 추가되었습니다.", Toast.LENGTH_SHORT).show()
-            DataList.add(Data(R.drawable.melon_chart_1, "Celebrity", "아이유", false))
+        binding.btnIu.setOnClickListener {
+            val name: String = "아이유"
+            val song: String = "Celebrity"
+            val img: Int = R.drawable.melon_chart_1
+            isExist(img, song, name)
         }
 
+        binding.btnGyoungseo.setOnClickListener {
+            val name: String = "경서"
+            val song: String = "밤하늘의 별을(2020)"
+            val img: Int = R.drawable.melon_chart_2
+            isExist(img, song, name)
+        }
+
+        binding.btnBts.setOnClickListener {
+            val name: String = "방탄소년단"
+            val song: String = "Dynamite"
+            val img: Int = R.drawable.melon_chart_3
+            isExist(img, song, name)
+        }
+        binding.btnMirani.setOnClickListener {
+            val name: String = "미란이(Mirani), 먼치맨(MUNCHMAN), 쿤디판다(Khundi Panda), 머쉬베놈(MUSHVENOM)"
+            val song: String = "VVS (Feat. JUSTHIS) (Prod. GroovyRoom)"
+            val img: Int = R.drawable.melon_chart_4
+            isExist(img, song, name)
+        }
+        binding.btnJangbeomjoon.setOnClickListener {
+            val name: String = "장범준"
+            val song: String = "잠이 오질 않네요"
+            val img: Int = R.drawable.melon_chart_5
+            isExist(img, song, name)
+        }
+
+        binding.btnBlackpink.setOnClickListener {
+            val name: String = "BLACKPINK"
+            val song: String = "Lovesick Girls"
+            val img: Int = R.drawable.melon_chart_6
+            isExist(img, song, name)
+        }
+
+        binding.btn10cm.setOnClickListener {
+            val name: String = "10CM"
+            val song: String = "이 밤을 빌려 말해요 (바른연애 길잡이 X 10CM)"
+            val img: Int = R.drawable.melon_chart_7
+            isExist(img, song, name)
+        }
+
+        binding.btnSandeul.setOnClickListener {
+            val name: String = "산들"
+            val song: String = "취기를 빌려 (취향저격 그녀 X 산들)"
+            val img: Int = R.drawable.melon_chart_8
+            isExist(img, song, name)
+        }
+
+        binding.btnLimchangjeong.setOnClickListener {
+            val name: String = "임창정"
+            val song: String = "힘든 건 사랑이 아니다"
+            val img: Int = R.drawable.melon_chart_9
+            isExist(img, song, name)
+        }
+
+        binding.btnLimchangjeong.setOnClickListener {
+            val name: String = "아이유"
+            val song: String = "에잇(Prod. Feat. SUGA of BTS)"
+            val img: Int = R.drawable.melon_chart_10
+            isExist(img, song, name)
+        }
+
+
         binding.asd.setOnClickListener {
-                binding.drawLayout.visibility = View.VISIBLE
-                binding.drawLayout.startAnimation(tranLeft)
-                binding.asd.visibility = View.GONE
+            binding.drawLayout.visibility = View.VISIBLE
+            binding.drawLayout.startAnimation(tranLeft)
+            binding.asd.visibility = View.GONE
         }
 
         binding.btnDraw.setOnClickListener {
@@ -119,7 +189,20 @@ class Fragment2 : Fragment() {
         }
     }
 
-
+    fun isExist(img: Int, name: String, songname: String) {
+        var i: Int = 0
+        while (i <= DataList.size - 1) {
+            if (DataList[i].song.toString() == name) {
+                Toast.makeText(context, "이미 플레이리스트에 있습니다.", Toast.LENGTH_SHORT).show()
+                break
+            }
+            i++
+        }
+        if (i == DataList.size) {
+            Toast.makeText(context, "플레이리스트에 추가되었습니다.", Toast.LENGTH_SHORT).show()
+            DataList.add(Data(img, songname, name, false))
+        }
+    }
 }
 
 

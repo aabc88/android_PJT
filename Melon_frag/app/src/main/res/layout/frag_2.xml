@@ -161,7 +161,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                     <ImageView
-                        android:id="@+id/btn_iu"
+                        android:id="@+id/btn_all"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginTop="4dp"
@@ -198,6 +198,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_marginTop="4dp"
+                        android:id="@+id/btn_suffle"
                         android:src="@drawable/suffle"
                         app:layout_constraintEnd_toStartOf="@+id/textView6"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -277,6 +278,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
+                                    android:id="@+id/btn_iu"
                                     android:src="@drawable/main_play" />
                             </LinearLayout>
 
@@ -343,6 +345,7 @@
 
                                 <ImageView
                                     android:layout_width="18dp"
+                                    android:id="@+id/btn_gyoungseo"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:src="@drawable/main_play" />
@@ -413,6 +416,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
+                                    android:id="@+id/btn_bts"
                                     android:src="@drawable/main_play" />
                             </LinearLayout>
 
@@ -479,6 +483,7 @@
 
                                 <ImageView
                                     android:layout_width="18dp"
+                                    android:id="@+id/btn_mirani"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:src="@drawable/main_play" />
@@ -549,6 +554,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
+                                    android:id="@+id/btn_jangbeomjoon"
                                     android:src="@drawable/main_play" />
                             </LinearLayout>
 
@@ -615,6 +621,7 @@
 
                                 <ImageView
                                     android:layout_width="18dp"
+                                    android:id="@+id/btn_blackpink"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:src="@drawable/main_play" />
@@ -683,6 +690,7 @@
 
                                 <ImageView
                                     android:layout_width="18dp"
+                                    android:id="@+id/btn_10cm"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:src="@drawable/main_play" />
@@ -750,6 +758,7 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/btn_sandeul"
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -821,6 +830,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
+                                    android:id="@+id/btn_limchangjeong"
                                     android:src="@drawable/main_play" />
                             </LinearLayout>
 
@@ -889,6 +899,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
+                                    android:id="@+id/btn_iu2"
                                     android:src="@drawable/main_play" />
                             </LinearLayout>
 
