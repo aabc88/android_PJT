@@ -2,12 +2,17 @@ package com.example.melon_frag
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import com.example.fruitpjt.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.fruitpjt.Fragment3
+import com.example.fruitpjt.Fragment4
+import com.example.fruitpjt.Fragment5
 import com.example.melon_frag.databinding.ActivityMainBinding
+
+var nowFrag: Int = 1
+var nowFrag_img : Int = 1
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,12 +30,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.window?.apply {
-            this.statusBarColor = Color.rgb(39, 39, 39)
+            this.statusBarColor = Color.parseColor("#272727")
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE
         }
 
-        setFrag(1)
-        binding.btnBottom1.setImageResource(R.drawable.bottom_select_1)
+        if(nowFrag != 1) {
+            setFrag(nowFrag)
+            when(nowFrag_img){
+                2 -> { binding.btnBottom2.setImageResource(R.drawable.bottom_select_2)
+                    statusbarVisible(false)}
+                3 -> { binding.btnBottom3.setImageResource(R.drawable.bottom_select_3)}
+                4 -> { binding.btnBottom4.setImageResource(R.drawable.bottom_select_4)}
+                5 -> { binding.btnBottom5.setImageResource(R.drawable.bottom_select_5)}
+            }
+        } else{
+            setFrag(1)
+            binding.btnBottom1.setImageResource(R.drawable.bottom_select_1)
+        }
 
         binding.btnBottom1.setOnClickListener {
             setFrag(1)
@@ -91,11 +107,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
         }
     }
-
     private fun setFrag(fragnum: Int) {
         val ft = supportFragmentManager.beginTransaction()
         when (fragnum) {

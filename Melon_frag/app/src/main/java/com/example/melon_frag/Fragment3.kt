@@ -42,4 +42,10 @@ class Fragment3 : Fragment() {
 
     }
     fun Int.dpToPx(displayMetrics: DisplayMetrics): Int = (this * displayMetrics.density).toInt()
+
+    override fun onPause() {
+        super.onPause()
+        nowFrag = 3
+        nowFrag_img = nowFrag
+    }
 }

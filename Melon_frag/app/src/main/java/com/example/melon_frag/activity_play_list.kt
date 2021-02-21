@@ -1,6 +1,7 @@
 package com.example.melon_frag
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,6 +22,11 @@ class activity_play_list : AppCompatActivity() {
 
         setContentView(view)
 
+        this.window?.apply {
+            this.statusBarColor = Color.parseColor("#272727")
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE
+        }
+
         binding.listView.isNestedScrollingEnabled = true
         binding.listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
         binding.listView.adapter = CustomAdapter(this, DataList)
@@ -34,6 +40,11 @@ class activity_play_list : AppCompatActivity() {
         binding.editIntent.setOnClickListener {
             var intent = Intent(this, edit_playlist::class.java)
             startActivity(intent)
+        }
+
+        binding.btnPlayListShuffle.setOnClickListener {
+            DataList.shuffle()
+            (binding.listView.adapter as CustomAdapter).notifyDataSetChanged()
         }
 
         /*binding.btn1.setOnClickListener(View.OnClickListener {
@@ -66,4 +77,5 @@ class activity_play_list : AppCompatActivity() {
         }
         (binding.listView.adapter as CustomAdapter).notifyDataSetChanged()
     }
+
 }

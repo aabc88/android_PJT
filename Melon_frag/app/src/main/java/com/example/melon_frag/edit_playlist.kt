@@ -3,11 +3,10 @@ package com.example.melon_frag
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import com.example.melon_frag.databinding.ActivityEditPlaylistBinding
-import com.example.melon_frag.databinding.ActivityPlayListBinding
 
 class edit_playlist : AppCompatActivity() {
     private lateinit var binding: ActivityEditPlaylistBinding
@@ -21,6 +20,11 @@ class edit_playlist : AppCompatActivity() {
         val view = binding.root
         var isAllChecked: Boolean = false
         setContentView(view)
+
+        this.window?.apply {
+            this.statusBarColor = Color.parseColor("#272727")
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE
+        }
         val adapter = CustomAdapter(this, DataList)
 
         binding.editList.isNestedScrollingEnabled = true

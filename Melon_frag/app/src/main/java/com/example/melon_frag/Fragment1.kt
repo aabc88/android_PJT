@@ -16,4 +16,9 @@ class Fragment1 : Fragment()    {
 
         return view
     }
+
+    override fun onPause() {
+        super.onPause()
+        nowFrag = 1
+    }
 }

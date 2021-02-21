@@ -1,18 +1,14 @@
 package com.example.melon_frag
 
-import android.animation.ObjectAnimator
-import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
-import android.view.animation.AnimationSet
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.melon_frag.*
 import com.example.melon_frag.databinding.Frag2Binding
-import com.google.android.material.animation.AnimationUtils
 
 
 class Fragment2 : Fragment() {
@@ -28,12 +24,12 @@ class Fragment2 : Fragment() {
         var nowpage: Int = 1
         setFrag(1)
 
+
+
         var tranLeft: Animation =
             android.view.animation.AnimationUtils.loadAnimation(context, R.anim.translate_top)
         var tranRight: Animation =
             android.view.animation.AnimationUtils.loadAnimation(context, R.anim.translate_bot)
-
-
 
         binding.btnIu.setOnClickListener {
             val name: String = "아이유"
@@ -41,14 +37,12 @@ class Fragment2 : Fragment() {
             val img: Int = R.drawable.melon_chart_1
             isExist(img, song, name)
         }
-
         binding.btnGyoungseo.setOnClickListener {
             val name: String = "경서"
             val song: String = "밤하늘의 별을(2020)"
             val img: Int = R.drawable.melon_chart_2
             isExist(img, song, name)
         }
-
         binding.btnBts.setOnClickListener {
             val name: String = "방탄소년단"
             val song: String = "Dynamite"
@@ -67,43 +61,36 @@ class Fragment2 : Fragment() {
             val img: Int = R.drawable.melon_chart_5
             isExist(img, song, name)
         }
-
         binding.btnBlackpink.setOnClickListener {
             val name: String = "BLACKPINK"
             val song: String = "Lovesick Girls"
             val img: Int = R.drawable.melon_chart_6
             isExist(img, song, name)
         }
-
         binding.btn10cm.setOnClickListener {
             val name: String = "10CM"
             val song: String = "이 밤을 빌려 말해요 (바른연애 길잡이 X 10CM)"
             val img: Int = R.drawable.melon_chart_7
             isExist(img, song, name)
         }
-
         binding.btnSandeul.setOnClickListener {
             val name: String = "산들"
             val song: String = "취기를 빌려 (취향저격 그녀 X 산들)"
             val img: Int = R.drawable.melon_chart_8
             isExist(img, song, name)
         }
-
         binding.btnLimchangjeong.setOnClickListener {
             val name: String = "임창정"
             val song: String = "힘든 건 사랑이 아니다"
             val img: Int = R.drawable.melon_chart_9
             isExist(img, song, name)
         }
-
         binding.btnLimchangjeong.setOnClickListener {
             val name: String = "아이유"
             val song: String = "에잇(Prod. Feat. SUGA of BTS)"
             val img: Int = R.drawable.melon_chart_10
             isExist(img, song, name)
         }
-
-
         binding.asd.setOnClickListener {
             binding.drawLayout.visibility = View.VISIBLE
             binding.drawLayout.startAnimation(tranLeft)
@@ -113,7 +100,10 @@ class Fragment2 : Fragment() {
         binding.btnDraw.setOnClickListener {
             binding.drawLayout.visibility = View.GONE
             binding.drawLayout.startAnimation(tranRight)
-            binding.asd.visibility = View.VISIBLE
+            Handler().postDelayed({
+                //딜레이 후 시작할 코드 작성
+                binding.asd.visibility = View.VISIBLE
+            }, 400) // 0.5초 딜레이
         }
 
         /*class DrawButtonClickListener : View.OnClickListener {
@@ -202,6 +192,12 @@ class Fragment2 : Fragment() {
             Toast.makeText(context, "플레이리스트에 추가되었습니다.", Toast.LENGTH_SHORT).show()
             DataList.add(Data(img, songname, name, false))
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        nowFrag = 2
+        nowFrag_img = nowFrag
     }
 }
 
