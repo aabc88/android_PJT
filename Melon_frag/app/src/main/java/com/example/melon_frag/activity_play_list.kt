@@ -10,6 +10,18 @@ import com.example.melon_frag.databinding.ActivityPlayListBinding
 
 var DataList = arrayListOf(
     Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false),
+    Data(R.drawable.melon_chart_1, "아이유", "Celebrity", false)
 )
 
 class activity_play_list : AppCompatActivity() {
