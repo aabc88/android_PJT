@@ -21,10 +21,10 @@ class Game_Main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGameMainBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(view)
+        setContentView(Game_View(this))
         //가로모드, 전체화면
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        //requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        //requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN

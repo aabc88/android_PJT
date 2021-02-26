@@ -11,6 +11,8 @@ import android.view.Window
 import android.view.WindowManager
 import com.example.game.databinding.ActivityMainBinding
 
+var w = 0
+var h = 0
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -31,10 +33,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         //
         val display: Display = windowManager.defaultDisplay
-        val width = display.width
-        val height = display.height
-        println("width = " + width)
-        println("height = " + height)
+        w = display.width
+        h = display.height
+        println("width = " + w)
+        println("height = " + h)
 
         binding.btnPlaygame.setOnClickListener {
             val intent = Intent(this, Game_Main::class.java)
