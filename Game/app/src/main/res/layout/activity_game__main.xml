@@ -6,4 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Game_Main">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/game_background"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            />
+
+        <com.example.game.Game
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </LinearLayout>
