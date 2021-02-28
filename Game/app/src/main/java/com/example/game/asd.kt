@@ -294,11 +294,7 @@ import java.util.*
 //
 // //캐릭터 그림 파일의 크기를 설정해줌. 폭은 (scrw-scrw를 64로 나눈 값의 나머지) 나누기 8, 높이는 (scrh-scrh을 32로 나눈 값의 나머지) 나누기 4
 // main[i] = Bitmap.createScaledBitmap(
-// main[i],
-// (scrw - scrw % 64) / 8,
-// (scrh - scrh % 32) / 4,
-// true
-// )
+// main[i], (scrw - scrw % 64) / 8, (scrh - scrh % 32) / 4, true)
 //
 // //i와 n의 값이 같다면
 // if (i == n) {
