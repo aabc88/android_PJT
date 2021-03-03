@@ -9,5 +9,6 @@ class KakaoApplication : Application() {
         super.onCreate()
 
         KakaoSdk.init(this, "348fa810493bebc28c9acbd1483cbe83")
+
     }
 }
