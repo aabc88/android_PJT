@@ -4,17 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#272727"
     tools:context=".SecondActivity">
 
-    <TextView
-        android:id="@+id/txt_html"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="123"
+    <ImageView
+        android:id="@+id/img_weather"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/weather_sunny"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asd"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/img_weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_region"
@@ -22,9 +33,10 @@
         android:layout_height="wrap_content"
         android:text="region"
         android:textSize="18sp"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_html" />
+        app:layout_constraintTop_toBottomOf="@+id/img_weather" />
 
     <TextView
         android:id="@+id/txt_temp"
@@ -33,6 +45,7 @@
         android:text="temp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#fff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_region" />
 

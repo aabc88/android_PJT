@@ -18,7 +18,7 @@ import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.model.User
 
-var is_login = false
+var is_login: Boolean = false
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -28,19 +28,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //KakaoSdk.init(this, "348fa810493bebc28c9acbd1483cbe83")
         var keyHash = Utility.getKeyHash(this)
         println("keyHash = " + keyHash)
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null)
                 Toast.makeText(this, "아이디 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-             else if (token != null) {
+            else if (token != null) {
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show();
                 is_login = true
             }
             update_ui()
+            loginCheck()
         }
+
 
         binding.btnKakaoLogin.setOnClickListener {
             LoginClient.instance.run {
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         update_ui()
+        loginCheck()
     }
 
     fun update_ui() {
@@ -77,24 +79,23 @@ class MainActivity : AppCompatActivity() {
                 binding.btnKakaoLogin.visibility = View.GONE
                 binding.btnKakaoLogout.visibility = View.VISIBLE
                 binding.imgLoading.visibility = View.VISIBLE
-                //Glide.with(binding.imgProfile).load(user.kakaoAccount!!.profile!!.thumbnailImageUrl).circleCrop().into(binding.imgProfile)
-                println("이미지 = " + user.kakaoAccount!!.profile!!.thumbnailImageUrl)
+                Glide.with(binding.imgProfile).load(user.kakaoAccount!!.profile!!.thumbnailImageUrl).circleCrop().into(binding.imgProfile)
 
-               /*if (user.kakaoAccount!!.profile!!.thumbnailImageUrl == null)
-                    Glide.with(binding.imgProfile).load(R.drawable.null_profile_img).circleCrop()
-                        .into(binding.imgProfile)*/
+                if (user.kakaoAccount!!.profile!!.thumbnailImageUrl == null)
+                     Glide.with(binding.imgProfile).load(R.drawable.null_profile_img).circleCrop()
+                         .into(binding.imgProfile)
 
-                val handler = Handler()
+                /*val handler = Handler()
                 handler.postDelayed({
                     val start_intent = Intent(this, SecondActivity::class.java)
                     startActivity(start_intent)
-                }, 2000)
+                }, 2000)*/
             } else {
                 binding.txtNickname.text = ("로그인이 필요합니다.")
                 binding.imgProfile.setImageResource(R.drawable.basic_profile_img)
                 binding.btnKakaoLogin.visibility = View.VISIBLE
                 binding.btnKakaoLogout.visibility = View.GONE
-                //Glide.with(this).load(R.drawable.loading_gjf).into(binding.imgLoading)
+                Glide.with(this).load(R.drawable.loading_gjf).into(binding.imgLoading)
                 binding.imgLoading.visibility = View.GONE
             }
         }
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         fun toast_p() {
             Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
         }
+
         var dialog_listener = object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when (which) {
@@ -122,5 +124,9 @@ class MainActivity : AppCompatActivity() {
         dialog.setPositiveButton("YES", dialog_listener)
         dialog.setNegativeButton("NO", dialog_listener)
         dialog.show()
+    }
+
+    fun loginCheck() {
+        if (is_login) startActivity(Intent(this, SecondActivity::class.java))
     }
 }
