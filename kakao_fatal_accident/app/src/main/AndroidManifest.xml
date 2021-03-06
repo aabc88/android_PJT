@@ -14,12 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".testActivity"></activity>
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="348fa810493bebc28c9acbd1483cbe83" />
 
+        <activity android:name=".testActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
