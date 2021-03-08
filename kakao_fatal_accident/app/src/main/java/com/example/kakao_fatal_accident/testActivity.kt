@@ -14,10 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.kakao_fatal_accident.databinding.ActivityTestBinding
 import com.google.gson.GsonBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
@@ -101,6 +98,7 @@ class testActivity : AppCompatActivity() {
                 }
                 if (check) startMap() else {
                     Toast.makeText(this, "권한을 승인해야 앱을 사용할 수 있습니다.", Toast.LENGTH_SHORT).show()
+                    finish()
                 }
 
 
@@ -122,18 +120,21 @@ class testActivity : AppCompatActivity() {
             2,
             true
         );
-        val marker = MapPOIItem()
+
+        val temp  = getMyTempJson(latitude, longitude)
+
+        /*val marker = MapPOIItem()
         val mappoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
-        val temp : String = getMyTempJson(latitude, longitude)
-        println("             my gps : "+temp)
+        println("             my gps_temp : "+temp)
         mapView.removeAllPOIItems()
         marker.itemName = ("내 위치\n"+temp+"℃")
         marker.tag = 0
         marker.mapPoint = mappoint
         marker.markerType = (MapPOIItem.MarkerType.BluePin)
-        mapView.addPOIItem(marker)
-        var now_Addres = getKoreanAddress(latitude, longitude)
-        println("            현재 주소는 " + now_Addres)
+        mapView.addPOIItem(marker)*/
+
+        //var now_Addres = getKoreanAddress(latitude, longitude)
+        //println("            현재 주소는 " + now_Addres)
 
     }
 
@@ -154,13 +155,23 @@ class testActivity : AppCompatActivity() {
             var temp = json_main.getString("temp")
             temp = (((temp.toDouble() - 273.15)).roundToInt()).toString()
             resTemp = temp
+            println("***************"+resTemp)
 
+            val marker = MapPOIItem()
+            val mappoint = MapPoint.mapPointWithGeoCoord(lat, lon)
+
+            mapView.removeAllPOIItems()
+            marker.itemName = ("내 위치\n"+temp+"℃")
+            marker.tag = 0
+            marker.mapPoint = mappoint
+            marker.markerType = (MapPOIItem.MarkerType.BluePin)
+            mapView.addPOIItem(marker)
         }
+
         return resTemp
     }
 
     fun getMyTemp(lat : Double, lon : Double) : String {
-        println()
         val client = OkHttpClient.Builder().build()
         //2. 요청
         val req = Request.Builder()
@@ -196,7 +207,7 @@ class testActivity : AppCompatActivity() {
         }
 
         if (addresses == null || addresses.size == 0) {
-            Toast.makeText(this, "주소 미발견", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "주소 미발견", Toast.LENGTH_LONG).show()
             return "주소 미발견"
         }
         val address: Address = addresses[0]
@@ -208,8 +219,17 @@ class testActivity : AppCompatActivity() {
             "Seoul", "Suwon", "Incheon", "Anyang", "Seongnam", "Osan", "Wonju",
             "Yangyang", "Sokcho", "Gangneung", "Chungju", "Cheonan", "Seosan", "Daejeon", "Jeonju", "Iksan",
             "Mokpo", "Haenam", "Gwangju", "Yeosu", "Beolgyo", "Gimcheon", "Daegu", "Waegwan", "Andong",
-            "Pohang", "Uiseong", "Busan", "Ulsan", "Miryang", "Masan", "Changwon", "Jinju", "Jeju"
-        )
+            "Pohang", "Uiseong", "Busan", "Ulsan", "Miryang", "Masan", "Changwon", "Jinju", "Jeju", "Anseong",
+            "Ansan-si", "Andong", "Gaigeturi", "Anyang-si", "Jamwon-dong", "Janggol", "Changp’o", "Changsu",
+            "Changwon", "Jinan-gun", "Chinch'ŏn", "Chinhae", "Chinju", "Jeollabuk-do", "Jeollanam-do",  "Ch’ŏngnim",
+            "Cheongsong gun", "Chuncheon", "Chungcheongbuk-do", "Chungcheongnam-do", "Jungpyong",
+            "Hamyang", "Hayang", "Hongch’ŏn", "Hwaseong-si", "Icheon-si", "Imsil", "Inje", "Yanggu", "Ganghwa-gun",
+            "Gangneung", "Gangwon-do", "Gapyeong", "Gimcheon", "Kimhae", "Kimje", "Gimpo-si", "Koch'ang",
+            "Koesan", "Kyosai", "Gongju", "Goyang-si",  "Gumi", "Gunpo", "Guri-si", "Gwacheon", "Masan", "Muan", "Paju",
+            "Naju", "Nonsan", "Bucheon-si"
+
+
+            )
 
         for (i in 0..array.size-1) {
             CoroutineScope(Dispatchers.Main).launch {
@@ -227,7 +247,9 @@ class testActivity : AppCompatActivity() {
                 temp = (((temp.toDouble() - 273.15)).roundToInt()).toString()
                 //json weather[]배열 받기
                 val json_weather = json_obj.getJSONArray("weather").get(0).toString()
+                println("%%%%%%%%%%%%%%%%%%%%%%%%%%"+json_weather)
                 val weather = gson.fromJson(json_weather, WeatherVO::class.java)
+                println("%%%%%%%%%%%%%%%%%%%%%%%%%%"+weather.main)
                 //json에서 coord받고 위도 경도 받아오기
                 val coord = json_obj.getJSONObject("coord")
                 val lon = coord.getDouble("lon")
@@ -245,7 +267,6 @@ class testActivity : AppCompatActivity() {
                 marker.markerType = (MapPOIItem.MarkerType.RedPin)
                 mapView.addPOIItem(marker)
             }
-
         }
     }
 
