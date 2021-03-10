@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 binding.btnStart.visibility = View.VISIBLE
                 binding.txtNickname.text = (user.kakaoAccount!!.profile!!.nickname) + "님 환영합니다"
                 //Glide.with(binding.imgProfile).load(user.kakaoAccount!!.profile!!.thumbnailImageUrl)
-                  //  .circleCrop().into(binding.imgProfile)
+                 //   .circleCrop().into(binding.imgProfile)
 
                 /*if (user.kakaoAccount!!.profile!!.thumbnailImageUrl == null)
                     Glide.with(binding.imgProfile).load(R.drawable.null_profile_img).circleCrop()
